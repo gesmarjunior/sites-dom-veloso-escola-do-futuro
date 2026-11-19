@@ -1,0 +1,265 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Galeria de trabalhos escolares sobre o Dia da Consciência Negra.">
+    <title>Galeria de trabalhos — Consciência Negra</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --page: #f4f5f6;
+            --surface: #fff;
+            --text: #22272b;
+            --muted: #68727a;
+            --line: #e1e5e8;
+            --accent: #354b5b;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-width: 320px;
+            min-height: 100vh;
+            margin: 0;
+            background: var(--page);
+            color: var(--text);
+            font-family: "Segoe UI", Arial, sans-serif;
+            line-height: 1.55;
+        }
+
+        .page {
+            width: min(1180px, calc(100% - 48px));
+            margin: 0 auto;
+        }
+
+        .site-header {
+            padding: 38px 0 34px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .eyebrow {
+            margin: 0 0 8px;
+            color: var(--muted);
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 650;
+            letter-spacing: -0.035em;
+            line-height: 1.2;
+        }
+
+        .intro {
+            max-width: 650px;
+            margin: 10px 0 0;
+            color: var(--muted);
+        }
+
+        main {
+            padding: 30px 0 64px;
+        }
+
+        .section-heading {
+            margin: 0 0 18px;
+            font-size: 1rem;
+            font-weight: 650;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            align-items: stretch;
+            gap: 20px;
+        }
+
+        .project {
+            display: flex;
+            min-width: 0;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            background: var(--surface);
+            box-shadow: 0 2px 6px rgb(25 35 42 / 4%);
+            transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+        }
+
+        .project:hover,
+        .project:focus-within {
+            transform: translateY(-3px);
+            border-color: #b7c1c8;
+            box-shadow: 0 8px 20px rgb(25 35 42 / 9%);
+        }
+
+        .preview {
+            position: relative;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            border-bottom: 1px solid var(--line);
+            background: #e9edef;
+        }
+
+        .preview iframe {
+            width: 400%;
+            height: 400%;
+            border: 0;
+            background: #fff;
+            transform: scale(0.25);
+            transform-origin: top left;
+        }
+
+        .project-info {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 16px 18px;
+        }
+
+        .project-info small {
+            display: block;
+            margin-bottom: 3px;
+            color: var(--muted);
+            font-size: 0.72rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .project-info h3 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 650;
+            overflow-wrap: anywhere;
+        }
+
+        .open-link {
+            flex: 0 0 auto;
+            padding: 7px 10px;
+            border: 1px solid #cbd3d8;
+            border-radius: 6px;
+            color: var(--accent);
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 160ms ease, border-color 160ms ease;
+        }
+
+        .open-link:hover,
+        .open-link:focus-visible {
+            border-color: var(--accent);
+            background: #f2f5f6;
+        }
+
+        .open-link:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .empty-state {
+            grid-column: 1 / -1;
+            padding: 24px;
+            border: 1px dashed #cbd3d8;
+            border-radius: 8px;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        footer {
+            padding: 18px 0 24px;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 850px) {
+            .gallery {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 560px) {
+            .page {
+                width: min(100% - 32px, 430px);
+            }
+
+            .site-header {
+                padding-top: 28px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <header class="site-header">
+            <p class="eyebrow">Mostra escolar · Dia da Consciência Negra</p>
+            <h1>Galeria de trabalhos</h1>
+            <p class="intro">
+                Explore os projetos produzidos pelos grupos. Cada cartão mostra uma prévia
+                do trabalho e permite abrir a página completa.
+            </p>
+        </header>
+
+        <main>
+            <h2 class="section-heading">Todos os trabalhos</h2>
+            <div class="gallery">
+                {% assign project_count = 0 %}
+                {% assign projects = site.pages | concat: site.static_files %}
+                {% for project in projects %}
+                    {% if project.name contains '.html' and project.path != 'index.html' %}
+                        {% assign project_count = project_count | plus: 1 %}
+                        {% assign project_title = project.title | default: project.name | remove: '.html' | replace: '_', ' ' | replace: '-', ' ' | capitalize %}
+                        {% assign project_url = project.url %}
+                        {% unless project_url %}
+                            {% assign project_url = project.path | prepend: '/' %}
+                        {% endunless %}
+                        {% assign project_url = project_url | relative_url %}
+                        <article class="project">
+                            <div class="preview">
+                                <iframe src="{{ project_url }}" title="Prévia de {{ project_title }}" loading="lazy" sandbox="allow-scripts" tabindex="-1" aria-hidden="true"></iframe>
+                            </div>
+                            <div class="project-info">
+                                <div>
+                                    <small>Trabalho escolar</small>
+                                    <h3>{{ project_title }}</h3>
+                                </div>
+                                <a class="open-link" href="{{ project_url }}">Abrir</a>
+                            </div>
+                        </article>
+                    {% endif %}
+                {% endfor %}
+                {% if project_count == 0 %}
+                    <p class="empty-state">Ainda não há trabalhos publicados nesta galeria.</p>
+                {% endif %}
+            </div>
+        </main>
+
+        <footer>Mostra escolar · Dia da Consciência Negra</footer>
+    </div>
+</body>
+</html>

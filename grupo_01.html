@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portal educativo completo sobre o Dia da Consciência Negra, história, Zumbi e Dandara dos Palmares, cultura afro-brasileira e luta antirracista.">
+    <title>Consciência Negra | História, Resistência e Futuro</title>
+    
+    <!-- Fontes Google: Playfair Display (Títulos) e Plus Jakarta Sans (Texto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           VARIÁVEIS E CONFIGURAÇÕES GERAIS
+           ========================================= */
+        :root {
+            --bg-dark: #14100E;
+            --bg-card: #1F1916;
+            --bg-light: #F8F5F0;
+            --bg-cream: #EFE9DF;
+            --primary-gold: #D99B26;
+            --primary-terracotta: #B84A27;
+            --accent-green: #2E6F40;
+            --text-light: #F8F5F0;
+            --text-muted-light: #C4B9B0;
+            --text-dark: #1E1815;
+            --text-muted-dark: #574B44;
+            --border-dark: rgba(217, 155, 38, 0.25);
+            --border-light: rgba(30, 24, 21, 0.12);
+            --radius: 12px;
+            
+            /* Curvas de animação suaves */
+            --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --transition-fast: 0.35s var(--ease-smooth);
+            --transition-slow: 0.8s var(--ease-smooth);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .serif {
+            font-family: 'Playfair Display', serif;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-padding {
+            padding: 6rem 0;
+        }
+
+        /* =========================================
+           CLASSES DE ANIMAÇÃO (SCROLL REVEAL)
+           ========================================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity var(--transition-slow), transform var(--transition-slow);
+            will-change: opacity, transform;
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-35px);
+            transition: opacity var(--transition-slow), transform var(--transition-slow);
+            will-change: opacity, transform;
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(35px);
+            transition: opacity var(--transition-slow), transform var(--transition-slow);
+            will-change: opacity, transform;
+        }
+
+        .reveal.is-visible,
+        .reveal-left.is-visible,
+        .reveal-right.is-visible {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+
+        /* Atrasos escalonados (Stagger) para grids */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+
+        @keyframes fadeUpHero {
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gentleGlow {
+            0%, 100% {
+                transform: scale(1) translate(0, 0);
+                opacity: 0.85;
+            }
+            50% {
+                transform: scale(1.06) translate(-10px, 10px);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInQuiz {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================================
+           ELEMENTOS UI
+           ========================================= */
+        .badge {
+            display: inline-block;
+            padding: 0.35rem 0.9rem;
+            background-color: rgba(217, 155, 38, 0.15);
+            color: var(--primary-gold);
+            border: 1px solid var(--primary-gold);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .badge-dark {
+            background-color: rgba(184, 74, 39, 0.12);
+            color: var(--primary-terracotta);
+            border-color: var(--primary-terracotta);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 4rem auto;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-muted-dark);
+        }
+
+        /* =========================================
+           NAVEGAÇÃO E BARRA DE PROGRESSO
+           ========================================= */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(20, 16, 14, 0.92);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-dark);
+            transition: background-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(20, 16, 14, 0.98);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        .scroll-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary-terracotta), var(--primary-gold));
+            transition: width 0.12s ease-out;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform var(--transition-fast);
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
+        }
+
+        .logo span {
+            color: var(--primary-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted-light);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 0.3rem 0;
+            transition: color var(--transition-fast);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: var(--primary-gold);
+            transition: width var(--transition-fast);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: transform var(--transition-fast);
+        }
+
+        .mobile-menu-btn:hover {
+            transform: scale(1.1);
+            color: var(--primary-gold);
+        }
+
+        /* =========================================
+           HERO SECTION
+           ========================================= */
+        .hero {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--primary-gold);
+        }
+
+        /* Brilho de fundo com respiração suave */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: -10%;
+            background: radial-gradient(circle at top right, rgba(184, 74, 39, 0.32) 0%, transparent 45%),
+                        radial-gradient(circle at bottom left, rgba(217, 155, 38, 0.25) 0%, transparent 45%);
+            animation: gentleGlow 12s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-animate-1 {
+            opacity: 0;
+            animation: fadeUpHero 0.9s var(--ease-smooth) 0.1s forwards;
+        }
+
+        .hero-animate-2 {
+            opacity: 0;
+            animation: fadeUpHero 0.9s var(--ease-smooth) 0.25s forwards;
+        }
+
+        .hero-animate-3 {
+            opacity: 0;
+            animation: fadeUpHero 0.9s var(--ease-smooth) 0.4s forwards;
+        }
+
+        .hero-animate-4 {
+            opacity: 0;
+            animation: fadeUpHero 0.9s var(--ease-smooth) 0.55s forwards;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.2rem);
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .hero h1 span {
+            color: var(--primary-gold);
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted-light);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: var(--radius);
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+            display: inline-block;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-gold);
+            color: var(--bg-dark);
+            box-shadow: 0 6px 20px rgba(217, 155, 38, 0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: #eab03c;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(217, 155, 38, 0.35);
+        }
+
+        .btn-primary:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-light);
+            border: 1px solid var(--text-muted-light);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-gold);
+            color: var(--primary-gold);
+            transform: translateY(-3px);
+            background-color: rgba(217, 155, 38, 0.06);
+        }
+
+        .hero-card {
+            background-color: rgba(31, 25, 22, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border-dark);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            opacity: 0;
+            animation: fadeUpHero 1s var(--ease-smooth) 0.45s forwards;
+            transition: transform var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .hero-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-gold);
+        }
+
+        .hero-card blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            border-left: 3px solid var(--primary-gold);
+            padding-left: 1.2rem;
+        }
+
+        .hero-card cite {
+            color: var(--primary-gold);
+            font-style: normal;
+            font-weight: 600;
+            display: block;
+        }
+
+        /* =========================================
+           SEÇÃO: O SIGNIFICADO DO 20 DE NOVEMBRO
+           ========================================= */
+        .meaning-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .meaning-card {
+            background-color: #FFFFFF;
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-light);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .meaning-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-terracotta);
+            box-shadow: 0 20px 40px rgba(30, 24, 21, 0.08);
+        }
+
+        .meaning-icon {
+            width: 54px;
+            height: 54px;
+            background-color: var(--bg-cream);
+            color: var(--primary-terracotta);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+            transition: transform var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
+        }
+
+        .meaning-card:hover .meaning-icon {
+            background-color: var(--primary-terracotta);
+            color: #FFFFFF;
+            transform: scale(1.08) rotate(-3deg);
+        }
+
+        .meaning-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .meaning-card p {
+            color: var(--text-muted-dark);
+        }
+
+        /* =========================================
+           SEÇÃO: QUILOMBO DOS PALMARES, ZUMBI E DANDARA
+           ========================================= */
+        .palmares-section {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        .palmares-section .section-header p {
+            color: var(--text-muted-light);
+        }
+
+        .palmares-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        .leader-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-dark);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .leader-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary-gold);
+            box-shadow: 0 18px 38px rgba(0, 0, 0, 0.35);
+        }
+
+        .leader-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--primary-terracotta));
+        }
+
+        .leader-tag {
+            color: var(--primary-gold);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .leader-card h3 {
+            font-size: 2rem;
+            margin: 0.5rem 0 1.2rem 0;
+        }
+
+        .leader-card p {
+            color: var(--text-muted-light);
+            margin-bottom: 1rem;
+        }
+
+        .palmares-banner {
+            margin-top: 3rem;
+            background: linear-gradient(90deg, rgba(184, 74, 39, 0.2), rgba(217, 155, 38, 0.15));
+            border: 1px solid var(--border-dark);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .palmares-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .stat-box {
+            background-color: var(--bg-dark);
+            padding: 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-dark);
+            transition: transform var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .stat-box:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-gold);
+        }
+
+        .stat-box strong {
+            display: block;
+            font-size: 1.8rem;
+            color: var(--primary-gold);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-box span {
+            font-size: 0.85rem;
+            color: var(--text-muted-light);
+        }
+
+        /* =========================================
+           SEÇÃO: LINHA DO TEMPO HISTÓRICA
+           ========================================= */
+        .timeline-section {
+            background-color: var(--bg-cream);
+            overflow: hidden;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--primary-terracotta);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            right: -9px;
+            background-color: var(--primary-gold);
+            border: 4px solid var(--bg-dark);
+            top: 22px;
+            border-radius: 50%;
+            z-index: 1;
+            transition: transform var(--transition-fast), background-color var(--transition-fast);
+        }
+
+        .timeline-item:hover::after {
+            transform: scale(1.3);
+            background-color: var(--primary-terracotta);
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .right::after {
+            left: -9px;
+        }
+
+        .timeline-content {
+            padding: 1.8rem;
+            background-color: #FFFFFF;
+            border-radius: var(--radius);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-light);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-terracotta);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.09);
+        }
+
+        .timeline-year {
+            font-weight: 800;
+            color: var(--primary-terracotta);
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .timeline-content p {
+            font-size: 0.95rem;
+            color: var(--text-muted-dark);
+        }
+
+        /* =========================================
+           SEÇÃO: PERSONALIDADES NEGRAS (COM FILTRO SUAVE)
+           ========================================= */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            border: 1px solid var(--border-light);
+            background-color: #FFFFFF;
+            color: var(--text-dark);
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            border-color: var(--bg-dark);
+        }
+
+        .filter-btn.active {
+            background-color: var(--bg-dark);
+            color: var(--primary-gold);
+            border-color: var(--bg-dark);
+            box-shadow: 0 6px 16px rgba(20, 16, 14, 0.18);
+        }
+
+        .figures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .figure-card {
+            background-color: #FFFFFF;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast), opacity 0.35s var(--ease-smooth);
+        }
+
+        .figure-card.hiding {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        .figure-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 18px 38px rgba(0,0,0,0.1);
+        }
+
+        .figure-header {
+            background: linear-gradient(135deg, var(--bg-dark), #36241B);
+            color: var(--text-light);
+            padding: 1.8rem;
+            border-bottom: 3px solid var(--primary-gold);
+            transition: background var(--transition-fast);
+        }
+
+        .figure-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-gold);
+            font-weight: 700;
+        }
+
+        .figure-header h3 {
+            font-size: 1.45rem;
+            margin-top: 0.3rem;
+        }
+
+        .figure-dates {
+            font-size: 0.85rem;
+            color: var(--text-muted-light);
+        }
+
+        .figure-body {
+            padding: 1.8rem;
+            flex-grow: 1;
+        }
+
+        .figure-body p {
+            font-size: 0.95rem;
+            color: var(--text-muted-dark);
+        }
+
+        /* =========================================
+           SEÇÃO: EDUCAÇÃO ANTIRRACISTA E LEIS
+           ========================================= */
+        .education-section {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        .education-section .section-header p {
+            color: var(--text-muted-light);
+        }
+
+        .laws-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .law-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-dark);
+            padding: 2rem;
+            border-radius: var(--radius);
+            transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .law-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary-gold);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .law-card h4 {
+            color: var(--primary-gold);
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .law-card p {
+            color: var(--text-muted-light);
+            font-size: 0.95rem;
+        }
+
+        /* QUIZ INTERATIVO */
+        .quiz-container {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-dark);
+            border-radius: var(--radius);
+            padding: 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+        }
+
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-step-animate {
+            animation: fadeInQuiz 0.45s var(--ease-smooth) forwards;
+        }
+
+        .quiz-question {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .quiz-option {
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border-dark);
+            color: var(--text-light);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            text-align: left;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: transform var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
+        }
+
+        .quiz-option:hover:not(:disabled) {
+            border-color: var(--primary-gold);
+            background-color: rgba(217, 155, 38, 0.12);
+            transform: translateX(6px);
+        }
+
+        .quiz-option.correct {
+            background-color: rgba(46, 111, 64, 0.4);
+            border-color: #4ade80;
+            color: #ffffff;
+            transform: scale(1.01);
+        }
+
+        .quiz-option.wrong {
+            background-color: rgba(184, 74, 39, 0.4);
+            border-color: #f87171;
+            color: #ffffff;
+        }
+
+        .quiz-feedback {
+            margin-top: 1.5rem;
+            padding: 1.2rem;
+            border-radius: 8px;
+            background-color: rgba(255,255,255,0.05);
+            border-left: 3px solid var(--primary-gold);
+            display: none;
+            font-size: 0.95rem;
+            color: var(--text-muted-light);
+            animation: fadeInQuiz 0.4s var(--ease-smooth) forwards;
+        }
+
+        .quiz-controls {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+        footer {
+            background-color: #0D0A09;
+            color: var(--text-muted-light);
+            padding: 4rem 0 2rem 0;
+            border-top: 1px solid var(--border-dark);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            color: var(--text-light);
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-col ul a {
+            transition: color var(--transition-fast), padding-left var(--transition-fast);
+        }
+
+        .footer-col ul a:hover {
+            color: var(--primary-gold);
+            padding-left: 4px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            font-size: 0.9rem;
+        }
+
+        /* =========================================
+           RESPONSIVIDADE E ACESSIBILIDADE
+           ========================================= */
+        @media (max-width: 900px) {
+            .hero-grid, .palmares-grid, .palmares-banner, .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 22px;
+            }
+
+            .right {
+                left: 0%;
+            }
+
+            .reveal-left, .reveal-right {
+                transform: translateY(28px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-dark);
+                padding: 0 2rem;
+                max-height: 0;
+                overflow: hidden;
+                opacity: 0;
+                border-bottom: 1px solid transparent;
+                transition: max-height 0.45s var(--ease-smooth), opacity 0.35s ease, padding 0.45s var(--ease-smooth);
+            }
+
+            .nav-links.active {
+                max-height: 360px;
+                opacity: 1;
+                padding: 1.5rem 2rem 2rem 2rem;
+                border-bottom-color: var(--border-dark);
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        /* Respeita usuários que preferem movimento reduzido */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .reveal, .reveal-left, .reveal-right, .hero-animate-1, .hero-animate-2, .hero-animate-3, .hero-animate-4, .hero-card {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER / NAVEGAÇÃO -->
+    <header id="mainHeader">
+        <div class="container nav-container">
+            <a href="#" class="logo">Consciência <span>Negra</span></a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menu">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#significado">O 20 de Novembro</a></li>
+                <li><a href="#palmares">Palmares</a></li>
+                <li><a href="#historia">Linha do Tempo</a></li>
+                <li><a href="#personalidades">Personalidades</a></li>
+                <li><a href="#educacao">Leis & Quiz</a></li>
+            </ul>
+        </div>
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div>
+                <span class="badge hero-animate-1">20 de Novembro • Memória, Luta e Identidade</span>
+                <h1 class="hero-animate-2">A história do Brasil escrita pela <span>resistência negra</span>.</h1>
+                <p class="hero-animate-3">O Dia Nacional de Zumbi e da Consciência Negra é um marco de reflexão sobre a inserção do negro na sociedade brasileira, o combate ao racismo estrutural e a celebração da ancestralidade africana que moldou nossa cultura.</p>
+                <div class="hero-buttons hero-animate-4">
+                    <a href="#palmares" class="btn btn-primary">Explorar a História</a>
+                    <a href="#educacao" class="btn btn-outline">Testar Conhecimentos</a>
+                </div>
+            </div>
+            <div class="hero-card">
+                <blockquote>
+                    "Não basta não ser racista, é preciso ser antirracista. A liberdade não é uma concessão, é uma conquista diária da memória e da justiça."
+                </blockquote>
+                <cite>— Reflexão sobre o Legado de Palmares</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 1: O SIGNIFICADO DO 20 DE NOVEMBRO -->
+    <section id="significado" class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="badge badge-dark">Por que 20 de Novembro?</span>
+                <h2>Protagonismo em vez de tutela</h2>
+                <p>Entenda a diferença histórica entre o 13 de maio e o 20 de novembro, e como o movimento negro ressignificou a memória nacional.</p>
+            </div>
+
+            <div class="meaning-grid">
+                <div class="meaning-card reveal delay-1">
+                    <div class="meaning-icon">01</div>
+                    <h3>A Escolha da Data</h3>
+                    <p>O dia 20 de novembro marca a morte de <strong>Zumbi dos Palmares</strong>, em 1695. A data foi proposta em 1971 pelo <em>Grupo Palmares</em>, em Porto Alegre, liderado por nomes como Oliveira Silveira, contrapondo-se ao 13 de maio.</p>
+                </div>
+
+                <div class="meaning-card reveal delay-2">
+                    <div class="meaning-icon">02</div>
+                    <h3>Crítica ao 13 de Maio</h3>
+                    <p>Enquanto o 13 de maio (Lei Áurea) retrata a abolição como um ato de bondade da Princesa Isabel sem garantir direitos, terras ou inclusão, o 20 de novembro celebra a <strong>luta ativa e organizada</strong> do próprio povo negro pela liberdade.</p>
+                </div>
+
+                <div class="meaning-card reveal delay-3">
+                    <div class="meaning-icon">03</div>
+                    <h3>Consciência e Identidade</h3>
+                    <p>Mais do que recordar o passado escravocrata, a data convoca a sociedade a enfrentar o racismo estrutural contemporâneo, valorizar as religiões de matriz africana, a estética, a ciência e a intelectualidade negra.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 2: QUILOMBO DOS PALMARES, ZUMBI E DANDARA -->
+    <section id="palmares" class="section-padding palmares-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="badge">Símbolos de Liberdade</span>
+                <h2>Quilombo dos Palmares: A República Livre</h2>
+                <p>Situado na Serra da Barriga (atual Alagoas), Palmares foi o maior e mais duradouro foco de resistência à escravidão nas Américas.</p>
+            </div>
+
+            <div class="palmares-grid">
+                <div class="leader-card reveal delay-1">
+                    <span class="leader-tag">Líder Militar e Estratégico</span>
+                    <h3>Zumbi dos Palmares (1655–1695)</h3>
+                    <p>Nascido livre em Palmares, foi capturado ainda criança e entregue a um padre, aprendendo português e latim. Aos 15 anos, fugiu e retornou ao quilombo, tornando-se seu principal estrategista militar.</p>
+                    <p>Zumbi recusou acordos de paz com a Coroa Portuguesa que exigiam a devolução de escravizados fugidos, defendendo a liberdade irrestrita até ser traído e morto em uma emboscada em 20 de novembro de 1695.</p>
+                </div>
+
+                <div class="leader-card reveal delay-2">
+                    <span class="leader-tag">Guerreira e Estrategista</span>
+                    <h3>Dandara dos Palmares (?–1694)</h3>
+                    <p>Companheira de Zumbi e mãe de três filhos, Dandara foi uma das principais lideranças femininas de Palmares. Dominava técnicas de capoeira, caça, agricultura e comandava falanges inteiras de guerreiros.</p>
+                    <p>Opôs-se firmemente ao Tratado de Paz de 1678 assinado por Ganga Zumba. Em 1694, após a destruição da cerca real do Macaco, atirou-se de uma pedreira para não retornar à condição de escravizada.</p>
+                </div>
+            </div>
+
+            <div class="palmares-banner reveal delay-2">
+                <div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 0.8rem; color: var(--primary-gold);">Uma sociedade organizada e autossuficiente</h3>
+                    <p style="color: var(--text-muted-light);">Palmares não era apenas um esconderijo, mas uma confederação de vários mocambos (povoados) com agricultura diversificada, metalurgia, comércio com vilas vizinhas e organização política própria que abrigou também indígenas e brancos perseguidos pela Coroa.</p>
+                </div>
+                <div class="palmares-stats">
+                    <div class="stat-box">
+                        <strong>~100 anos</strong>
+                        <span>De resistência contínua</span>
+                    </div>
+                    <div class="stat-box">
+                        <strong>+20 mil</strong>
+                        <span>Habitantes no auge</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 3: LINHA DO TEMPO HISTÓRICA -->
+    <section id="historia" class="section-padding timeline-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="badge badge-dark">Cronologia</span>
+                <h2>Marcos da Luta Negra no Brasil</h2>
+                <p>Da resistência quilombola às conquistas legais contemporâneas: uma trajetória de séculos de mobilização.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item left reveal-left">
+                    <div class="timeline-content">
+                        <span class="timeline-year">1597 – 1695</span>
+                        <h3>A Era do Quilombo dos Palmares</h3>
+                        <p>Quase um século de resistência armada e organização social na Serra da Barriga, liderado por figuras como Aqualtune, Ganga Zumba, Dandara e Zumbi.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item right reveal-right">
+                    <div class="timeline-content">
+                        <span class="timeline-year">1835</span>
+                        <h3>Revolta dos Malês (Bahia)</h3>
+                        <p>O maior levante urbano de escravizados do Brasil, organizado em Salvador por africanos muçulmanos alfabetizados em árabe, exigindo o fim da escravidão e liberdade religiosa.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item left reveal-left">
+                    <div class="timeline-content">
+                        <span class="timeline-year">1888</span>
+                        <h3>Abolição Tardia sem Reparação</h3>
+                        <p>O Brasil é o último país das Américas a abolir formalmente a escravidão (13 de maio), após intensa pressão abolicionista liderada por negros como Luiz Gama, André Rebouças e José do Patrocínio.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item right reveal-right">
+                    <div class="timeline-content">
+                        <span class="timeline-year">1971 & 1978</span>
+                        <h3>Nascimento do 20 de Novembro e do MNU</h3>
+                        <p>O Grupo Palmares celebra pela primeira vez o 20 de novembro em 1971. Em 1978, nasce o Movimento Negro Unificado (MNU), nacionalizando a data como Dia da Consciência Negra.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item left reveal-left">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2003</span>
+                        <h3>Lei 10.639/03</h3>
+                        <p>Torna obrigatório o ensino de História e Cultura Afro-Brasileira e Africana nas escolas públicas e privadas do Brasil, incluindo oficialmente o 20 de novembro no calendário escolar.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item right reveal-right">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2023</span>
+                        <h3>Feriado Nacional</h3>
+                        <p>A Lei nº 14.759 institui o Dia Nacional de Zumbi e da Consciência Negra como feriado em todo o território brasileiro.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 4: PERSONALIDADES NEGRAS (COM FILTRO INTERATIVO) -->
+    <section id="personalidades" class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="badge badge-dark">Pioneiros e Mestres</span>
+                <h2>Personalidades que Transformaram o Brasil</h2>
+                <p>Conheça intelectuais, cientistas, artistas e líderes negros muitas vezes apagados da história oficial.</p>
+            </div>
+
+            <div class="filter-buttons reveal delay-1">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="ciencia">Ciência & Engenharia</button>
+                <button class="filter-btn" data-filter="literatura">Literatura & Pensamento</button>
+                <button class="filter-btn" data-filter="resistencia">Direitos & Resistência</button>
+                <button class="filter-btn" data-filter="cultura">Artes & Cultura</button>
+            </div>
+
+            <div class="figures-grid" id="figuresGrid">
+                <!-- Card 1 -->
+                <div class="figure-card reveal" data-category="resistencia">
+                    <div class="figure-header">
+                        <span class="figure-category">Direitos & Resistência</span>
+                        <h3>Luiz Gama</h3>
+                        <span class="figure-dates">1830 – 1882</span>
+                    </div>
+                    <div class="figure-body">
+                        <p>Vendido ilegalmente como escravo pelo próprio pai aos 10 anos, alfabetizou-se e tornou-se rábula (advogado). Libertou mais de 500 pessoas escravizadas nos tribunais utilizando as próprias leis do Império.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="figure-card reveal" data-category="ciencia">
+                    <div class="figure-header">
+                        <span class="figure-category">Ciência & Engenharia</span>
+                        <h3>Enedina Alves Marques</h3>
+                        <span class="figure-dates">1913 – 1981</span>
+                    </div>
+                    <div class="figure-body">
+                        <p>Primeira mulher negra a se formar em Engenharia no Brasil (UFPR, 1945) e primeira engenheira do estado do Paraná. Atuou em grandes obras de infraestrutura, como a Usina Hidrelétrica Capivari-Cachoeira.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="figure-card reveal" data-category="literatura">
+                    <div class="figure-header">
+                        <span class="figure-category">Literatura & Pensamento</span>
+                        <h3>Maria Firmina dos Reis</h3>
+                        <span class="figure-dates">1822 – 1917</span>
+                    </div>
+                    <div class="figure-body">
+                        <p>Considerada a primeira romancista negra do Brasil. Em 1859 publicou <em>"Úrsula"</em>, o primeiro romance abolicionista da língua portuguesa, dando voz humana e protagonismo aos africanos escravizados.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="figure-card reveal" data-category="literatura">
+                    <div class="figure-header">
+                        <span class="figure-category">Literatura & Pensamento</span>
+                        <h3>Lélia Gonzalez</h3>
+                        <span class="figure-dates">1935 – 1994</span>
+                    </div>
+                    <div class="figure-body">
+                        <p>Intelectual, filósofa, antropóloga e cofundadora do Movimento Negro Unificado. Criou o conceito de <em>Amefricanidade</em> e foi pioneira nos estudos sobre a interseccionalidade entre raça, gênero e classe no Brasil.</p>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="figure-card reveal" data-category="ciencia">
+                    <div class="figure-header">
+                        <span class="figure-category">Ciência & Engenharia</span>
+                        <h3>Juliano Moreira</h3>
+                        <span class="figure-dates">1872 – 1933</span>
+                    </div>
+                    <div class="figure-body">
+                        <p>Médico baiano considerado o fundador da psiquiatria moderna no Brasil. Combateu o racismo científico da época, refutando teorias que associavam doenças mentais à miscigenação e à população negra.</p>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="figure-card reveal" data-category="cultura">
+                    <div class="figure-header">
+                        <span class="figure-category">Artes & Cultura</span>
+                        <h3>Abdias do Nascimento</h3>
+                        <span class="figure-dates">1914 – 2011</span>
+                    </div>
+                    <div class="figure-body">
+                        <p>Ator, dramaturgo, artista plástico, professor e senador. Fundou o Teatro Experimental do Negro (TEN) em 1944, revolucionando a dramaturgia brasileira e formando atores negros como Ruth de Souza.</p>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="figure-card reveal" data-category="literatura">
+                    <div class="figure-header">
+                        <span class="figure-category">Literatura & Pensamento</span>
+                        <h3>Carolina Maria de Jesus</h3>
+                        <span class="figure-dates">1914 – 1977</span>
+                    </div>
+                    <div class="figure-body">
+                        <p>Catadora de papel e escritora mineira radicada em São Paulo. Seu livro <em>"Quarto de Despejo"</em> (1960) tornou-se um fenômeno mundial, traduzido para mais de 13 idiomas, retratando com crueza e poesia a fome e a desigualdade racial.</p>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="figure-card reveal" data-category="cultura">
+                    <div class="figure-header">
+                        <span class="figure-category">Artes & Cultura</span>
+                        <h3>Tia Ciata (Hilária Batista)</h3>
+                        <span class="figure-dates">1854 – 1924</span>
+                    </div>
+                    <div class="figure-body">
+                        <p>Mãe de santo, quituteira e figura central da Pequena África no Rio de Janeiro. Sua casa foi o berço do samba urbano moderno, onde foi gravado <em>"Pelo Telefone"</em> (1916), protegendo a cultura negra da perseguição policial.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 5: LEGISLAÇÃO E QUIZ INTERATIVO -->
+    <section id="educacao" class="section-padding education-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="badge">Direitos e Educação</span>
+                <h2>Instrumentos de Combate ao Racismo</h2>
+                <p>Conhecer as leis é fundamental para garantir direitos e construir uma sociedade equitativa.</p>
+            </div>
+
+            <div class="laws-grid">
+                <div class="law-card reveal delay-1">
+                    <h4>Lei Caó (Lei 7.716/1989)</h4>
+                    <p>Define os crimes resultantes de preconceito de raça ou de cor. Pela Constituição de 1988, o racismo é crime inafiançável e imprescritível.</p>
+                </div>
+
+                <div class="law-card reveal delay-2">
+                    <h4>Lei 10.639/2003</h4>
+                    <p>Altera a LDB para tornar obrigatório o ensino sobre História e Cultura Afro-Brasileira nos ensinos fundamental e médio de todo o país.</p>
+                </div>
+
+                <div class="law-card reveal delay-3">
+                    <h4>Estatuto da Igualdade Racial</h4>
+                    <p>Instituído pela Lei 12.288/2010, garante à população negra a efetivação da igualdade de oportunidades, defesa de direitos étnicos e combate à discriminação.</p>
+                </div>
+
+                <div class="law-card reveal delay-4">
+                    <h4>Injúria Racial (Lei 14.532/2023)</h4>
+                    <p>Equiparou a injúria racial (ofensa direcionada à dignidade de uma pessoa com base em raça/cor) ao crime de racismo, tornando-a também imprescritível.</p>
+                </div>
+            </div>
+
+            <!-- QUIZ INTERATIVO -->
+            <div class="quiz-container reveal">
+                <div class="quiz-header">
+                    <span class="badge">Quiz Educativo</span>
+                    <h3 style="font-size: 1.8rem;">Quanto você sabe sobre a História Negra no Brasil?</h3>
+                </div>
+
+                <div id="quizContent">
+                    <div id="quizStepWrapper">
+                        <p class="quiz-question" id="questionText">Carregando pergunta...</p>
+                        <div class="quiz-options" id="optionsContainer"></div>
+                        <div class="quiz-feedback" id="feedbackBox"></div>
+                    </div>
+                    <div class="quiz-controls">
+                        <span id="questionCounter" style="color: var(--text-muted-light); font-size: 0.9rem;">Pergunta 1 de 4</span>
+                        <button class="btn btn-primary" id="nextBtn" style="display: none; padding: 0.6rem 1.4rem;">Próxima Pergunta</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid reveal">
+                <div class="footer-col">
+                    <a href="#" class="logo" style="margin-bottom: 1rem;">Consciência <span>Negra</span></a>
+                    <p>Plataforma educativa dedicada à preservação da memória afro-brasileira, valorização de nossos ancestrais e promoção da educação antirracista.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="#significado">O 20 de Novembro</a></li>
+                        <li><a href="#palmares">Quilombo dos Palmares</a></li>
+                        <li><a href="#historia">Linha do Tempo</a></li>
+                        <li><a href="#personalidades">Personalidades</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Denuncie o Racismo</h4>
+                    <ul>
+                        <li>Disque Direitos Humanos: <strong>Disque 100</strong></li>
+                        <li>Polícia Militar: <strong>190</strong></li>
+                        <li>Ministério Público / Defensoria Pública</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Educação, Memória e Justiça Social • 20 de Novembro: Dia Nacional de Zumbi e da Consciência Negra.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT INTERATIVO -->
+    <script>
+        // 1. BARRA DE PROGRESSO DE LEITURA E EFEITO NO HEADER
+        const scrollProgress = document.getElementById('scrollProgress');
+        const mainHeader = document.getElementById('mainHeader');
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            
+            scrollProgress.style.width = scrollPercent + '%';
+
+            if (scrollTop > 40) {
+                mainHeader.classList.add('scrolled');
+            } else {
+                mainHeader.classList.remove('scrolled');
+            }
+        }, { passive: true });
+
+        // 2. ANIMAÇÃO DE APARIÇÃO AO ROLAR (INTERSECTION OBSERVER)
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Anima uma única vez com suavidade
+                }
+            });
+        }, {
+            threshold: 0.12,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // 3. MENU MOBILE SUAVE
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.textContent = '☰';
+            });
+        });
+
+        // 4. FILTRO DE PERSONALIDADES COM TRANSIÇÃO SUAVE
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const figureCards = document.querySelectorAll('.figure-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (btn.classList.contains('active')) return;
+
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                figureCards.forEach(card => {
+                    const matches = filterValue === 'all' || card.getAttribute('data-category') === filterValue;
+                    
+                    // Inicia fade-out suave
+                    card.classList.add('hiding');
+
+                    setTimeout(() => {
+                        if (matches) {
+                            card.style.display = 'flex';
+                            // Força reflow para animar a entrada
+                            void card.offsetWidth;
+                            card.classList.remove('hiding');
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }, 220);
+                });
+            });
+        });
+
+        // 5. QUIZ EDUCATIVO INTERATIVO
+        const quizData = [
+            {
+                question: "Qual grupo idealizou o 20 de novembro como Dia da Consciência Negra em 1971?",
+                options: [
+                    "Frente Negra Brasileira (São Paulo)",
+                    "Grupo Palmares (Porto Alegre)",
+                    "Teatro Experimental do Negro (Rio de Janeiro)",
+                    "Ilê Aiyê (Salvador)"
+                ],
+                correct: 1,
+                explanation: "Correto! Em 1971, o Grupo Palmares, em Porto Alegre (RS), liderado por Oliveira Silveira e outros ativistas, propôs o 20 de novembro em homenagem à morte de Zumbi."
+            },
+            {
+                question: "Quem foi a primeira romancista negra do Brasil, autora da obra abolicionista 'Úrsula' (1859)?",
+                options: [
+                    "Carolina Maria de Jesus",
+                    "Conceição Evaristo",
+                    "Maria Firmina dos Reis",
+                    "Lélia Gonzalez"
+                ],
+                correct: 2,
+                explanation: "Isso mesmo! A maranhense Maria Firmina dos Reis publicou 'Úrsula' em 1859, sendo pioneira na literatura abolicionista brasileira."
+            },
+            {
+                question: "O que estabelece a Lei Federal nº 10.639, sancionada em 2003?",
+                options: [
+                    "A criação do sistema de cotas nas universidades federais",
+                    "A obrigatoriedade do ensino de História e Cultura Afro-Brasileira nas escolas",
+                    "A titulação automática de todas as terras quilombolas",
+                    "A criação do Estatuto da Igualdade Racial"
+                ],
+                correct: 1,
+                explanation: "Exato! A Lei 10.639/03 tornou obrigatório o ensino da história e cultura afro-brasileira e africana na educação básica."
+            },
+            {
+                question: "Onde estava localizado o Quilombo dos Palmares?",
+                options: [
+                    "Na Serra da Barriga, atual estado de Alagoas",
+                    "No Recôncavo Baiano, próximo a Salvador",
+                    "Na Serra do Mar, no estado do Rio de Janeiro",
+                    "No Vale do Jequitinhonha, em Minas Gerais"
+                ],
+                correct: 0,
+                explanation: "Correto! O Quilombo dos Palmares situava-se na Serra da Barriga, região da antiga Capitania de Pernambuco, hoje município de União dos Palmares (AL)."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function renderQuizUI() {
+            const quizContent = document.getElementById('quizContent');
+            quizContent.innerHTML = `
+                <div id="quizStepWrapper" class="quiz-step-animate">
+                    <p class="quiz-question" id="questionText"></p>
+                    <div class="quiz-options" id="optionsContainer"></div>
+                    <div class="quiz-feedback" id="feedbackBox"></div>
+                </div>
+                <div class="quiz-controls">
+                    <span id="questionCounter" style="color: var(--text-muted-light); font-size: 0.9rem;"></span>
+                    <button class="btn btn-primary" id="nextBtn" style="display: none; padding: 0.6rem 1.4rem;">Próxima Pergunta</button>
+                </div>
+            `;
+
+            document.getElementById('nextBtn').addEventListener('click', () => {
+                currentQuestion++;
+                if (currentQuestion < quizData.length) {
+                    loadQuestion();
+                } else {
+                    showResults();
+                }
+            });
+        }
+
+        function loadQuestion() {
+            const q = quizData[currentQuestion];
+            const stepWrapper = document.getElementById('quizStepWrapper');
+            const questionText = document.getElementById('questionText');
+            const optionsContainer = document.getElementById('optionsContainer');
+            const feedbackBox = document.getElementById('feedbackBox');
+            const questionCounter = document.getElementById('questionCounter');
+            const nextBtn = document.getElementById('nextBtn');
+
+            // Reinicia a animação suave da pergunta
+            stepWrapper.classList.remove('quiz-step-animate');
+            void stepWrapper.offsetWidth;
+            stepWrapper.classList.add('quiz-step-animate');
+
+            questionText.textContent = q.question;
+            questionCounter.textContent = `Pergunta ${currentQuestion + 1} de ${quizData.length}`;
+            optionsContainer.innerHTML = '';
+            feedbackBox.style.display = 'none';
+            nextBtn.style.display = 'none';
+
+            q.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.classList.add('quiz-option');
+                btn.textContent = opt;
+                btn.addEventListener('click', () => selectOption(index, btn));
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function selectOption(selectedIndex, selectedBtn) {
+            const q = quizData[currentQuestion];
+            const allOptions = document.querySelectorAll('.quiz-option');
+            const feedbackBox = document.getElementById('feedbackBox');
+            const nextBtn = document.getElementById('nextBtn');
+
+            allOptions.forEach(btn => btn.disabled = true);
+
+            if (selectedIndex === q.correct) {
+                selectedBtn.classList.add('correct');
+                score++;
+            } else {
+                selectedBtn.classList.add('wrong');
+                allOptions[q.correct].classList.add('correct');
+            }
+
+            feedbackBox.textContent = q.explanation;
+            feedbackBox.style.display = 'block';
+            nextBtn.style.display = 'inline-block';
+            nextBtn.textContent = currentQuestion < quizData.length - 1 ? 'Próxima Pergunta' : 'Ver Resultado';
+        }
+
+        function showResults() {
+            const quizContent = document.getElementById('quizContent');
+            quizContent.innerHTML = `
+                <div class="quiz-step-animate" style="text-align: center; padding: 1.5rem 0;">
+                    <h4 style="font-size: 1.6rem; color: var(--primary-gold); margin-bottom: 1rem;">Quiz Concluído!</h4>
+                    <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">Você acertou <strong>${score}</strong> de <strong>${quizData.length}</strong> perguntas.</p>
+                    <button class="btn btn-primary" onclick="restartQuiz()">Refazer Quiz</button>
+                </div>
+            `;
+        }
+
+        window.restartQuiz = function() {
+            currentQuestion = 0;
+            score = 0;
+            renderQuizUI();
+            loadQuestion();
+        };
+
+        // Iniciar Quiz
+        renderQuizUI();
+        loadQuestion();
+    </script>
+</body>
+</html>
