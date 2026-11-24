@@ -1,0 +1,138 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f4eee5;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+header {
+    background-color: #442515;
+    color: white;
+    text-align: center;
+    padding: 45px;
+}
+
+header h1 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+nav {
+    background-color: #754321;
+    padding: 18px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ffd28a;
+}
+
+section {
+    background-color: white;
+    margin: 30px auto;
+    padding: 30px;
+    width: 85%;
+    border-radius: 10px;
+}
+
+h2 {
+    color: #754321;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #663719;
+    margin: 15px 0;
+}
+
+p {
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+section img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.pessoa {
+    background-color: #f5eee6;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+.pessoa img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+button {
+    background-color: #754321;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    margin: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #a56838;
+}
+
+#mensagem {
+    color: #754321;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+footer {
+    background-color: #442515;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+}
+
+hr {
+    margin: 20px 0;
+    border: 1px solid #ddd;
+}
+
+#quiz button {
+    margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 28px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 8px;
+    }
+
+    section {
+        width: 95%;
+        padding: 20px;
+    }
+}

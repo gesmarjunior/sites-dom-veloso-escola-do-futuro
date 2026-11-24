@@ -1,0 +1,203 @@
+
+/* Configuração geral */
+body {
+    background-color: #f5e6d3;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #542b16;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+/* Menu */
+nav {
+    background-color: #222;
+    text-align: center;
+    padding: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 15px;
+}
+
+/* Conteúdo */
+main {
+    width: 80%;
+    margin: auto;
+}
+
+/* Seções */
+section {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+/* Títulos */
+h2 {
+    color: #8b4513;
+}
+
+/* Imagem */
+img {
+    width: 100%;
+    max-width: 600px;
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+/* Rodapé */
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+#personalidades {
+    padding: 30px;
+    background-color: #f2f2f2;
+    color: #222;
+}
+
+#personalidades h2 {
+    text-align: center;
+    color: #8b4513;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.personalidade {
+    background-color: white;
+    padding: 20px;
+    margin: 25px auto;
+    max-width: 800px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+.personalidade h3 {
+    color: #8b4513;
+}
+
+.personalidade img {
+    width: 220px;
+    max-width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.personalidade p {
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.conclusao {
+    background-color: #222;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Estilo geral da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff8e7;
+    color: #222;
+}
+
+/* Conteúdo da cultura africana */
+#cultura-africana {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 25px;
+}
+
+/* Título principal */
+#cultura-africana h1 {
+    background: linear-gradient(90deg, #168442, #f5c400, #c62828);
+    color: white;
+    text-align: center;
+    padding: 30px;
+    border-radius: 12px;
+    font-size: 35px;
+}
+
+/* Títulos das seções */
+#cultura-africana h2 {
+    color: #168442;
+    border-left: 6px solid #e0a800;
+    padding-left: 12px;
+    margin-top: 30px;
+}
+
+/* Parágrafos */
+#cultura-africana p {
+    font-size: 17px;
+    line-height: 1.8;
+    text-align: justify;
+    margin: 15px 0;
+}
+
+/* Imagens */
+#cultura-africana img {
+    width: 100%;
+    max-width: 650px;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+    margin: 20px auto;
+    border-radius: 12px;
+    border: 4px solid #e0a800;
+}
+
+/* Linhas divisórias */
+#cultura-africana hr {
+    border: none;
+    height: 3px;
+    background: linear-gradient(
+        to right,
+        #168442,
+        #f5c400,
+        #c62828
+    );
+    margin: 30px 0;
+}
+
+/* Efeito nas imagens */
+#cultura-africana img:hover {
+    transform: scale(1.02);
+    transition: 0.3s;
+}
+
+/* Responsividade para celulares */
+@media (max-width: 600px) {
+    #cultura-africana {
+        padding: 12px;
+    }
+
+    #cultura-africana h1 {
+        font-size: 26px;
+    }
+
+    #cultura-africana img {
+        height: 230px;
+    }
+
+    #cultura-africana p {
+        font-size: 15px;
+    }
+}

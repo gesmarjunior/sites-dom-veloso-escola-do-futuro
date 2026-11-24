@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consciência Negra</title>
+    <link rel="stylesheet" href="grupo_07.css">
+</head>
+<body>
+
+    <header>
+        <h1>Consciência Negra</h1>
+        <p>Respeito, igualdade e valorização da cultura negra</p>
+    </header>
+
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#historia">História</a>
+        <a href="#personalidades">Personalidades</a>
+        <a href="#quiz">Perguntas</a>
+    </nav>
+
+    <section id="inicio">
+        <h2>O que é Consciência Negra?</h2>
+
+        <p>
+            A Consciência Negra é uma data muito importante para lembrar
+            a história, a cultura e a luta da população negra no Brasil.
+            Também é um momento para refletir sobre o racismo e a
+            importância de respeitar todas as pessoas.
+        </p>
+
+        <img src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?w=1000"
+        alt="Pessoas reunidas">
+
+        <p>
+            O objetivo dessa data é valorizar a cultura afro-brasileira
+            e lembrar que todas as pessoas merecem ter os mesmos direitos.
+        </p>
+    </section>
+
+    <section id="historia">
+        <h2>Um pouco da história</h2>
+
+        <p>
+            O Dia da Consciência Negra é comemorado no Brasil em
+            20 de novembro. A data foi escolhida em homenagem a
+            Zumbi dos Palmares, uma das principais figuras da
+            resistência contra a escravidão.
+        </p>
+
+        <p>
+            Durante muitos anos, pessoas negras foram escravizadas
+            e sofreram diversas injustiças. Mesmo assim, resistiram
+            e lutaram por liberdade e igualdade.
+        </p>
+
+        <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=1000"
+        alt="Manifestação de pessoas">
+
+        <h3>Por que o dia 20 de novembro?</h3>
+
+        <p>
+            Essa data marca a morte de Zumbi dos Palmares, em 1695.
+            Ele se tornou um símbolo de resistência e luta pela liberdade.
+        </p>
+    </section>
+
+    <section id="personalidades">
+        <h2>Personalidades importantes</h2>
+
+        <div class="pessoa">
+            
+            <h3>Zumbi dos Palmares</h3>
+
+            <p>
+                Foi uma importante liderança do Quilombo dos Palmares.
+                Ficou conhecido pela resistência contra a escravidão.
+            </p>
+        </div>
+
+        <div class="pessoa">
+            
+
+            <h3>Dandara dos Palmares</h3>
+
+            <p>
+                Foi uma mulher que participou da resistência no Quilombo
+                dos Palmares e lutou pela liberdade.
+            </p>
+        </div>
+
+        <div class="pessoa">
+            
+
+            <h3>Machado de Assis</h3>
+
+            <p>
+                Foi um dos maiores escritores brasileiros. Escreveu
+                livros importantes, como Dom Casmurro e Memórias
+                Póstumas de Brás Cubas.
+            </p>
+        </div>
+    </section>
+
+    <section id="importancia">
+        <h2>A importância do respeito</h2>
+
+        <p>
+            O racismo ainda existe na sociedade e precisa ser combatido.
+            Respeitar as diferenças, conhecer a história e tratar todos
+            com igualdade são atitudes importantes para construir
+            um mundo melhor.
+        </p>
+
+        <button onclick="mostrarMensagem()">Clique aqui</button>
+
+        <p id="mensagem"></p>
+    </section>
+
+    <section id="quiz">
+        <h2>Teste seus conhecimentos!</h2>
+
+        <p>1. Em qual dia é comemorada a Consciência Negra?</p>
+
+        <button onclick="responder(1, 'errado')">13 de maio</button>
+        <button onclick="responder(1, 'certo')">20 de novembro</button>
+        <button onclick="responder(1, 'errado')">7 de setembro</button>
+
+        <p id="resultado1"></p>
+
+        <hr>
+
+        <p>2. Quem foi Zumbi dos Palmares?</p>
+
+        <button onclick="responder(2, 'certo')">Uma liderança de resistência</button>
+        <button onclick="responder(2, 'errado')">Um jogador de futebol</button>
+        <button onclick="responder(2, 'errado')">Um navegador</button>
+
+        <p id="resultado2"></p>
+
+        <hr>
+
+        <p>3. Qual é um dos objetivos dessa data?</p>
+
+        <button onclick="responder(3, 'errado')">Esquecer a história</button>
+        <button onclick="responder(3, 'certo')">Combater o racismo</button>
+        <button onclick="responder(3, 'errado')">Separar as pessoas</button>
+
+        <p id="resultado3"></p>
+
+    </section>
+
+    <footer>
+        <p>Trabalho escolar - Consciência Negra</p>
+        <p>Respeitar as diferenças é construir um futuro melhor.</p>
+    </footer>
+
+    <script src="java.js"></script>
+
+</body>
+</html>

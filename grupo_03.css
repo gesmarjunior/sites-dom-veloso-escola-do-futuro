@@ -1,0 +1,211 @@
+
+/* CONFIGURAÇÃO GERAL */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f1eee8;
+    color: #292929;
+    font-family: Arial, sans-serif;
+}
+
+/* TÍTULO PRINCIPAL */
+h1 {
+    background-color: #191919;
+    color: #e2bd75;
+    font-size: 36px;
+    padding: 35px 15px;
+    margin: 0 0 30px;
+    border-bottom: 4px solid #a87936;
+}
+
+/* TÍTULOS SECUNDÁRIOS */
+h2 {
+    color: #75451f;
+    font-size: 27px;
+    margin-top: 25px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #c49a52;
+}
+
+/* PARÁGRAFOS */
+p {
+    max-width: 1100px;
+    margin: 18px auto;
+    padding: 20px 24px;
+    background-color: #ffffff;
+    color: #393939;
+    font-size: 17px;
+    line-height: 1.8;
+    text-align: justify;
+    border-left: 4px solid #a87936;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+}
+
+/* LISTAS */
+ul {
+    max-width: 1100px;
+    margin: 25px auto;
+    padding: 25px 45px;
+    background-color: #fff;
+    border-radius: 6px;
+    border-left: 4px solid #a87936;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+}
+
+li {
+    font-size: 16px;
+    line-height: 2;
+    padding-left: 5px;
+    color: #393939;
+}
+
+/* IMAGENS */
+img {
+    display: block;
+    width: auto;
+    max-width: 90%;
+    max-height: 400px;
+    object-fit: contain;
+    margin: 30px auto;
+    padding: 7px;
+    background-color: white;
+    border: 1px solid #d5c5a8;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+}
+
+/* IMAGEM DE ZUMBI COM TEXTO AO LADO */
+.zumbi {
+    max-width: 1100px;
+    margin: 35px auto;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+}
+
+.zumbi img {
+    width: 40%;
+    max-width: 350px;
+    height: 300px;
+    object-fit: cover;
+    margin: 0;
+}
+
+.zumbi div {
+    flex: 1;
+}
+
+.zumbi p {
+    box-shadow: none;
+    border-left: none;
+    padding: 5px;
+    margin: 10px 0;
+}
+
+/* VÍDEOS */
+video {
+    display: block;
+    width: 90%;
+    max-width: 750px;
+    margin: 35px auto;
+    border: 5px solid white;
+    border-radius: 8px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.15);
+}
+
+/* LINHAS DE SEPARAÇÃO */
+hr {
+    border: none;
+    height: 2px;
+    background-color: #c49a52;
+    max-width: 1100px;
+    margin: 35px auto;
+}
+
+/* CONCLUSÃO */
+section {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    border-top: 4px solid #a87936;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+}
+
+section p {
+    box-shadow: none;
+}
+
+/* RODAPÉ */
+footer {
+    background-color: #191919;
+    color: #e2bd75;
+    text-align: center;
+    padding: 20px;
+    border-top: 4px solid #a87936;
+}
+
+footer p {
+    background: none;
+    color: #e2bd75;
+    text-align: center;
+    box-shadow: none;
+    border: none;
+    margin: 0 auto;
+}
+
+/* ADAPTAÇÃO PARA CELULARES */
+@media (max-width: 750px) {
+
+    h1 {
+        font-size: 27px;
+    }
+
+    h2 {
+        font-size: 23px;
+    }
+
+    p {
+        width: 92%;
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    ul {
+        width: 92%;
+        padding: 20px 35px;
+    }
+
+    .zumbi {
+        width: 92%;
+        flex-direction: column;
+    }
+
+    .zumbi img {
+        width: 100%;
+        height: auto;
+    }
+
+    section {
+        width: 92%;
+        padding: 20px;
+    }
+
+    video {
+        width: 92%;
+    }
+
+    hr {
+        width: 90%;
+    }
+}

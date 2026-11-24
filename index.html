@@ -137,7 +137,7 @@ layout: null
             text-transform: uppercase;
         }
 
-        .project-info h3 {
+        .project-info h2 {
             margin: 0;
             font-size: 1rem;
             font-weight: 650;
@@ -231,7 +231,7 @@ layout: null
                 {% assign project_count = 0 %}
                 {% assign projects = site.pages | concat: site.static_files %}
                 {% for project in projects %}
-                    {% if project.name contains '.html' and project.path != 'index.html' %}
+                    {% if project.name contains 'grupo_' and project.name contains '.html' %}
                         {% assign project_count = project_count | plus: 1 %}
                         {% assign project_title = project.title | default: project.name | remove: '.html' | replace: '_', ' ' | replace: '-', ' ' | capitalize %}
                         {% assign project_url = project.url %}
@@ -246,7 +246,7 @@ layout: null
                             <div class="project-info">
                                 <div>
                                     <small>Trabalho escolar</small>
-                                    <h3>{{ project_title }}</h3>
+                                    <h2>{{ project_title }}</h2>
                                 </div>
                                 <a class="open-link" href="{{ project_url }}">Abrir</a>
                             </div>
