@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Um projeto sobre a história, cultura e resistência negra no Brasil.">
+  <title>RAÍZES — Consciência Negra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --black: #090909;
+  --dark: #11100e;
+  --gold: #d8aa58;
+  --cream: #eee7d9;
+  --muted: #a6a096;
+  --white: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
+body {
+  background: var(--black);
+  color: var(--cream);
+  font-family: "DM Sans", sans-serif;
+  overflow-x: hidden;
+}
+
+body.loading {
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font: inherit;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--black);
+}
+
+/* CARREGAMENTO */
+
+.loader {
+  position: fixed;
+  inset: 0;
+  background: #090909;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity .7s ease, visibility .7s ease;
+}
+
+.loader.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-logo {
+  font: 800 90px "Playfair Display", serif;
+  color: white;
+  animation: pulse 1.3s infinite alternate;
+}
+
+.loader-logo span,
+.logo span {
+  color: var(--gold);
+}
+
+.loader p {
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 5px;
+}
+
+@keyframes pulse {
+  from { opacity: .4; transform: scale(.95); }
+  to { opacity: 1; transform: scale(1.05); }
+}
+
+/* BARRA DE PROGRESSO */
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: var(--gold);
+  z-index: 1001;
+}
+
+/* MENU */
+
+.header {
+  height: 82px;
+  width: 100%;
+  padding: 0 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  background: rgba(9, 9, 9, .8);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  transition: .3s;
+}
+
+.logo {
+  font: 800 27px "Playfair Display", serif;
+  letter-spacing: 2px;
+}
+
+.nav {
+  display: flex;
+  gap: 30px;
+}
+
+.nav a {
+  color: #c4beb4;
+  font-size: 12px;
+  transition: .3s;
+}
+
+.nav a:hover {
+  color: var(--gold);
+}
+
+.presentation-btn {
+  border: 1px solid rgba(216,170,88,.6);
+  color: var(--gold);
+  background: transparent;
+  padding: 12px 17px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.presentation-btn:hover {
+  background: var(--gold);
+  color: var(--black);
+}
+
+.menu-btn {
+  display: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.menu-btn span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: white;
+  margin: 6px;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 130px 10% 100px;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url("https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=2000&q=90") center/cover;
+  transform: scale(1.08);
+  animation: heroZoom 14s ease-in-out infinite alternate;
+}
+
+@keyframes heroZoom {
+  from { transform: scale(1.05); }
+  to { transform: scale(1.16); }
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.95), rgba(0,0,0,.65) 55%, rgba(0,0,0,.2)),
+    linear-gradient(0deg, #090909, transparent 45%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 4px;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 27px;
+}
+
+.hero h1 {
+  font: 800 clamp(55px, 8vw, 112px)/.98 "Playfair Display", serif;
+  letter-spacing: -3px;
+  margin-bottom: 28px;
+}
+
+.hero h1 span,
+.section-heading h2 span,
+.manifesto h2 span,
+.resistance h2 span,
+.culture h2 span,
+.finale h2 span {
+  color: var(--gold);
+}
+
+.hero-content > p {
+  max-width: 520px;
+  color: #c9c2b8;
+  line-height: 1.9;
+  font-size: 14px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-top: 38px;
+}
+
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 25px;
+  padding: 17px 23px;
+  background: var(--gold);
+  color: #17130d;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  transition: .3s;
+}
+
+.primary-btn:hover {
+  transform: translateY(-5px);
+  background: #f0c879;
+  box-shadow: 0 10px 35px rgba(216,170,88,.2);
+}
+
+.primary-btn span {
+  font-size: 18px;
+}
+
+.text-btn {
+  color: #e3ddd3;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.text-btn:hover {
+  color: var(--gold);
+}
+
+.hero-bottom {
+  position: absolute;
+  bottom: 32px;
+  left: 10%;
+  right: 10%;
+  display: flex;
+  justify-content: space-between;
+  color: #aaa39a;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.hero-number {
+  position: absolute;
+  right: 8%;
+  bottom: 12%;
+  font: 700 180px "Playfair Display", serif;
+  color: rgba(255,255,255,.045);
+}
+
+/* MANIFESTO */
+
+.manifesto {
+  background: var(--cream);
+  color: #17130f;
+  padding: 140px 12%;
+}
+
+.manifesto-inner {
+  max-width: 850px;
+  margin: auto;
+}
+
+.eyebrow.dark {
+  color: #98713b;
+}
+
+.manifesto h2 {
+  font: 700 clamp(42px, 6vw, 78px)/1.08 "Playfair Display", serif;
+  letter-spacing: -2px;
+}
+
+.manifesto h2 span {
+  color: #9d7136;
+}
+
+.manifesto p {
+  margin-top: 32px;
+  max-width: 580px;
+  font-size: 15px;
+  line-height: 1.9;
+  color: #625c53;
+}
+
+.manifesto-line {
+  height: 1px;
+  width: 100%;
+  background: #c9bda9;
+  margin: 45px 0 20px;
+}
+
+.small-label {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #92764f;
+}
+
+/* TÍTULOS DE SEÇÃO */
+
+.section-heading {
+  max-width: 750px;
+  margin: 0 auto 65px;
+  text-align: center;
+}
+
+.section-heading h2 {
+  font: 700 clamp(38px, 5vw, 65px)/1.12 "Playfair Display", serif;
+  margin-bottom: 20px;
+}
+
+.section-heading p {
+  max-width: 600px;
+  margin: auto;
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 13px;
+}
+
+/* HISTÓRIA */
+
+.history {
+  padding: 125px 10%;
+  background: #10100e;
+}
+
+.history-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 75px;
+  align-items: center;
+}
+
+.history-photo {
+  height: 590px;
+  position: relative;
+  overflow: hidden;
+}
+
+.history-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(.3) brightness(.8);
+  transition: transform 1s;
+}
+
+.history-photo:hover img {
+  transform: scale(1.06);
+}
+
+.photo-tag {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  padding: 10px 15px;
+  background: var(--gold);
+  color: #17130d;
+  font-size: 9px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.timeline-item {
+  padding: 0 0 32px 25px;
+  border-left: 1px solid rgba(216,170,88,.45);
+  position: relative;
+}
+
+.timeline-item::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  background: var(--gold);
+  position: absolute;
+  left: -5px;
+  top: 4px;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(216,170,88,.5);
+}
+
+.timeline-item .year {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+}
+
+.timeline-item h3 {
+  font: 600 24px "Playfair Display", serif;
+  margin: 12px 0;
+}
+
+.timeline-item p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+/* ARQUIVO HISTÓRICO */
+
+.archive {
+  padding: 125px 9%;
+  background: #171512;
+}
+
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.archive-card {
+  background: #201d18;
+  border: 1px solid rgba(255,255,255,.06);
+  overflow: hidden;
+  transition: transform .4s, border-color .4s;
+}
+
+.archive-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(216,170,88,.5);
+}
+
+.archive-image {
+  height: 290px;
+  position: relative;
+  overflow: hidden;
+}
+
+.archive-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(.15) brightness(.8);
+  transition: transform .7s, filter .7s;
+}
+
+.archive-card:hover img {
+  transform: scale(1.07);
+  filter: sepia(0) brightness(1);
+}
+
+.archive-image span {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background: var(--gold);
+  color: #17130d;
+  padding: 8px 12px;
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.archive-info {
+  padding: 25px;
+}
+
+.archive-info h3 {
+  font: 600 25px "Playfair Display", serif;
+  margin-bottom: 12px;
+}
+
+.archive-info p {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 12px;
+  min-height: 45px;
+}
+
+.archive-info a {
+  display: inline-block;
+  margin-top: 22px;
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.archive-info a:hover {
+  color: white;
+}
+
+.archive-note {
+  color: #918a7e;
+  font-size: 10px;
+  line-height: 1.7;
+  margin-top: 25px;
+}
+
+/* RESISTÊNCIA */
+
+.resistance {
+  min-height: 700px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #0c0c0b;
+}
+
+.resistance-image {
+  min-height: 650px;
+  overflow: hidden;
+}
+
+.resistance-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(.65) sepia(.25);
+  transition: transform 1s;
+}
+
+.resistance-image:hover img {
+  transform: scale(1.05);
+}
+
+.resistance-content {
+  padding: 100px 12%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.resistance h2,
+.culture h2 {
+  font: 700 clamp(42px, 5vw, 70px)/1.05 "Playfair Display", serif;
+  margin-bottom: 28px;
+}
+
+.resistance-content p,
+.culture-content p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 2;
+  margin-bottom: 18px;
+}
+
+.resistance-signature {
+  display: flex;
+  flex-direction: column;
+  border-left: 2px solid var(--gold);
+  padding-left: 18px;
+  margin-top: 25px;
+}
+
+.resistance-signature strong {
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.resistance-signature span {
+  color: var(--gold);
+  font-size: 8px;
+  letter-spacing: 1px;
+  margin-top: 7px;
+}
+
+/* PERSONALIDADES */
+
+.people {
+  padding: 125px 9%;
+  background: #15130f;
+}
+
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.person-card {
+  background: #201d18;
+  overflow: hidden;
+  transition: transform .4s;
+}
+
+.person-card:hover {
+  transform: translateY(-9px);
+}
+
+.person-card img {
+  width: 100%;
+  height: 330px;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: .6s;
+}
+
+.person-card:hover img {
+  filter: grayscale(0);
+  transform: scale(1.03);
+}
+
+.person-info {
+  padding: 22px;
+}
+
+.person-info span {
+  font-size: 8px;
+  color: var(--gold);
+  letter-spacing: 2px;
+}
+
+.person-info h3 {
+  font: 600 21px "Playfair Display", serif;
+  margin: 12px 0;
+}
+
+.person-info p {
+  font-size: 11px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* CULTURA */
+
+.culture {
+  padding: 130px 9%;
+  background: #0d0d0c;
+}
+
+.culture-content {
+  max-width: 700px;
+  margin-bottom: 55px;
+}
+
+.culture-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.culture-card {
+  height: 380px;
+  position: relative;
+  overflow: hidden;
+}
+
+.culture-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,.9), transparent 75%);
+}
+
+.culture-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(.15) brightness(.8);
+  transition: transform .7s;
+}
+
+.culture-card:hover img {
+  transform: scale(1.09);
+}
+
+.culture-card div {
+  position: absolute;
+  z-index: 2;
+  left: 25px;
+  bottom: 25px;
+}
+
+.culture-card div span {
+  color: var(--gold);
+  font-size: 10px;
+}
+
+.culture-card h3 {
+  font: 600 30px "Playfair Display", serif;
+}
+
+/* ATUALIDADE */
+
+.today {
+  padding: 125px 9%;
+  background: var(--cream);
+  color: #17130f;
+}
+
+.today .section-heading p {
+  color: #71695e;
+}
+
+.today .eyebrow {
+  color: #98713b;
+}
+
+.today-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.today-item {
+  border-top: 1px solid #c5bba9;
+  padding: 30px 15px;
+  transition: .3s;
+}
+
+.today-item:hover {
+  border-color: #a27435;
+  transform: translateY(-5px);
+}
+
+.today-item span {
+  font: 700 35px "Playfair Display", serif;
+  color: #b58a4c;
+}
+
+.today-item h3 {
+  font: 600 23px "Playfair Display", serif;
+  margin: 20px 0 12px;
+}
+
+.today-item p {
+  font-size: 12px;
+  line-height: 1.9;
+  color: #6e675e;
+}
+
+/* FINAL */
+
+.finale {
+  min-height: 90vh;
+  padding: 130px 10% 35px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.finale-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.95), rgba(0,0,0,.6)),
+    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2000&q=85") center/cover;
+  filter: saturate(.4);
+}
+
+.finale-content {
+  position: relative;
+  max-width: 700px;
+}
+
+.finale h2 {
+  font: 700 clamp(50px, 7vw, 90px)/1.02 "Playfair Display", serif;
+  margin-bottom: 25px;
+}
+
+.finale p {
+  max-width: 510px;
+  color: #c1b9ad;
+  line-height: 1.9;
+  font-size: 14px;
+  margin-bottom: 35px;
+}
+
+.finale footer,
+footer {
+  position: relative;
+}
+
+.finale footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255,255,255,.2);
+  margin-top: auto;
+  padding-top: 25px;
+  color: #aaa39a;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+/* ANIMAÇÕES DE ENTRADA */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity .9s ease, transform .9s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* APRESENTAÇÃO */
+
+.presentation-hint {
+  display: none;
+}
+
+body.presentation-mode {
+  overflow: hidden;
+}
+
+body.presentation-mode .header,
+body.presentation-mode .progress-bar,
+body.presentation-mode .mobile-menu {
+  display: none !important;
+}
+
+body.presentation-mode .section-slide {
+  display: none;
+}
+
+body.presentation-mode .section-slide.active {
+  display: flex;
+  min-height: 100vh;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+body.presentation-mode .archive.active,
+body.presentation-mode .history.active,
+body.presentation-mode .people.active,
+body.presentation-mode .culture.active,
+body.presentation-mode .today.active {
+  display: block;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+body.presentation-mode .presentation-hint {
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 3000;
+  color: #fff;
+  background: rgba(0,0,0,.75);
+  padding: 12px 18px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  border: 1px solid rgba(216,170,88,.4);
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 1000px) {
+  .nav {
+    gap: 15px;
+  }
+
+  .nav a {
+    font-size: 10px;
+  }
+
+  .people-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .person-card img {
+    height: 280px;
+  }
+}
+
+@media (max-width: 760px) {
+  .header {
+    height: 70px;
+    padding: 0 6%;
+  }
+
+  .nav,
+  .presentation-btn {
+    display: none;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .mobile-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    background: #11100e;
+    padding: 20px 8%;
+    flex-direction: column;
+    gap: 20px;
+    border-bottom: 1px solid rgba(216,170,88,.3);
+  }
+
+  .mobile-menu.open {
+    display: flex;
+  }
+
+  .mobile-menu a {
+    font-size: 13px;
+    color: #eee7d9;
+  }
+
+  .hero {
+    padding: 120px 7% 100px;
+  }
+
+  .hero h1 {
+    font-size: clamp(48px, 14vw, 75px);
+  }
+
+  .hero-actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .hero-bottom {
+    left: 7%;
+    right: 7%;
+    font-size: 7px;
+  }
+
+  .hero-bottom span:last-child {
+    display: none;
+  }
+
+  .manifesto,
+  .history,
+  .archive,
+  .people,
+  .culture,
+  .today {
+    padding: 90px 7%;
+  }
+
+  .history-grid,
+  .resistance {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .history-photo {
+    height: 380px;
+  }
+
+  .resistance-image {
+    min-height: 350px;
+    height: 350px;
+  }
+
+  .resistance-content {
+    padding: 30px 8% 80px;
+  }
+
+  .archive-grid,
+  .culture-grid,
+  .today-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .archive-image {
+    height: 250px;
+  }
+
+  .people-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .person-card img {
+    height: 220px;
+  }
+
+  .person-info {
+    padding: 15px;
+  }
+
+  .person-info h3 {
+    font-size: 17px;
+  }
+
+  .person-info p {
+    font-size: 10px;
+  }
+
+  .culture-card {
+    height: 300px;
+  }
+
+  .finale {
+    padding: 100px 7% 30px;
+  }
+
+  .finale footer {
+    gap: 15px;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 400px) {
+  .people-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .person-card img {
+    height: 330px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+</style>
+</head>
+<body>
+
+  <div class="loader" id="loader">
+    <div class="loader-logo">R<span>.</span></div>
+    <p>UMA HISTÓRIA QUE PERMANECE</p>
+  </div>
+
+  <div class="progress-bar" id="progressBar"></div>
+
+  <header class="header" id="header">
+    <a href="#inicio" class="logo">RAÍZES<span>.</span></a>
+
+    <nav class="nav">
+      <a href="#inicio">Início</a>
+      <a href="#historia">História</a>
+      <a href="#arquivo">Arquivo</a>
+      <a href="#resistencia">Resistência</a>
+      <a href="#cultura">Cultura</a>
+    </nav>
+
+    <button class="presentation-btn" id="presentationBtn">
+      <span>▶</span> Apresentação
+    </button>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#inicio">Início</a>
+    <a href="#historia">História</a>
+    <a href="#arquivo">Arquivo histórico</a>
+    <a href="#resistencia">Resistência</a>
+    <a href="#personalidades">Personalidades</a>
+    <a href="#cultura">Cultura</a>
+    <a href="#atualidade">Atualidade</a>
+  </div>
+
+  <main>
+
+    <!-- INÍCIO -->
+    <section class="hero section-slide" id="inicio">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content reveal">
+        <span class="eyebrow">20 DE NOVEMBRO · DIA DA CONSCIÊNCIA NEGRA</span>
+        <h1>UMA HISTÓRIA<br>QUE <span>PERMANECE.</span></h1>
+        <p>
+          Conhecer o passado é reconhecer a força de um povo.
+          Celebrar sua história é construir um futuro com respeito,
+          igualdade e consciência.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#historia" class="primary-btn">EXPLORAR HISTÓRIA <span>↗</span></a>
+          <a href="#manifesto" class="text-btn">DESCUBRA O SIGNIFICADO</a>
+        </div>
+      </div>
+
+      <div class="hero-bottom">
+        <span>01 / 07 — MEMÓRIA, CULTURA E RESISTÊNCIA</span>
+        <span>ROLE PARA EXPLORAR ↓</span>
+      </div>
+
+      <div class="hero-number">01</div>
+    </section>
+
+    <!-- MANIFESTO -->
+    <section class="manifesto section-slide" id="manifesto">
+      <div class="manifesto-inner reveal">
+        <span class="eyebrow dark">MAIS DO QUE UMA DATA</span>
+        <h2>
+          A história não começa<br>
+          onde os livros costumam<br>
+          <span>começar.</span>
+        </h2>
+        <p>
+          A Consciência Negra é um convite à reflexão sobre a história
+          da população negra, suas contribuições para a sociedade,
+          as injustiças enfrentadas e a luta permanente por igualdade.
+        </p>
+        <div class="manifesto-line"></div>
+        <span class="small-label">MEMÓRIA • IDENTIDADE • RESPEITO</span>
+      </div>
+    </section>
+
+    <!-- HISTÓRIA -->
+    <section class="history section-slide" id="historia">
+      <div class="section-heading reveal">
+        <span class="eyebrow">CAPÍTULO 01 — O PASSADO</span>
+        <h2>Uma história que<br><span>precisa ser lembrada.</span></h2>
+        <p>O Brasil foi profundamente marcado pela escravidão e pela resistência daqueles que lutaram por liberdade.</p>
+      </div>
+
+      <div class="history-grid">
+        <div class="history-photo reveal">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Slaves%20working%20on%20a%20coffee%20plantation%2001.jpg" alt="Registro histórico de pessoas escravizadas trabalhando em uma plantação de café">
+          <span class="photo-tag">REGISTRO HISTÓRICO</span>
+        </div>
+
+        <div class="history-text reveal">
+          <div class="timeline-item">
+            <span class="year">SÉCULO XVI</span>
+            <h3>O início da escravidão no Brasil</h3>
+            <p>
+              Milhões de africanos foram trazidos à força para o Brasil
+              durante o período colonial. Essas pessoas foram submetidas
+              à violência e ao trabalho forçado.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <span class="year">SÉCULOS XVII E XVIII</span>
+            <h3>Resistência e formação de quilombos</h3>
+            <p>
+              Mesmo diante da opressão, pessoas escravizadas resistiram,
+              organizaram fugas, preservaram tradições e construíram
+              comunidades de liberdade.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <span class="year">1888</span>
+            <h3>A assinatura da Lei Áurea</h3>
+            <p>
+              Em 13 de maio de 1888, a Lei Áurea aboliu legalmente a
+              escravidão no Brasil. Entretanto, a população liberta
+              não recebeu políticas suficientes de inclusão social.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARQUIVO -->
+    <section class="archive section-slide" id="arquivo">
+      <div class="section-heading reveal">
+        <span class="eyebrow">CAPÍTULO 02 — DOCUMENTOS E MEMÓRIAS</span>
+        <h2>O passado em <span>imagens.</span></h2>
+        <p>Fotografias, documentos e representações que ajudam a compreender diferentes momentos da história.</p>
+      </div>
+
+      <div class="archive-grid">
+        <article class="archive-card reveal">
+          <div class="archive-image">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Slaves%20working%20on%20a%20coffee%20plantation%2001.jpg" alt="Fotografia histórica de uma plantação de café">
+            <span>01 / HISTÓRIA</span>
+          </div>
+          <div class="archive-info">
+            <h3>Trabalho escravizado</h3>
+            <p>Registro histórico relacionado ao trabalho de pessoas escravizadas em uma plantação de café.</p>
+            <a href="https://commons.wikimedia.org/wiki/Category:Photographs_of_slaves_in_Brazil" target="_blank" rel="noopener">CONSULTAR ARQUIVO ↗</a>
+          </div>
+        </article>
+
+        <article class="archive-card reveal">
+          <div class="archive-image">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Arquivo%20Senado%20Lei%20%C3%81urea%20%2852068699649%29.jpg" alt="Documento histórico da Lei Áurea">
+            <span>02 / DOCUMENTO</span>
+          </div>
+          <div class="archive-info">
+            <h3>Lei Áurea — 1888</h3>
+            <p>Documento histórico relacionado à lei que aboliu oficialmente a escravidão no Brasil.</p>
+            <a href="https://commons.wikimedia.org/wiki/File:Arquivo_Senado_Lei_%C3%81urea_(52068699649).jpg" target="_blank" rel="noopener">CONSULTAR DOCUMENTO ↗</a>
+          </div>
+        </article>
+
+        <article class="archive-card reveal">
+          <div class="archive-image">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Povo%20pa%C3%A7o%201888.jpg" alt="Multidão reunida diante do Paço Imperial em 1888">
+            <span>03 / ABOLIÇÃO</span>
+          </div>
+          <div class="archive-info">
+            <h3>O dia da abolição</h3>
+            <p>Imagem histórica de uma multidão reunida diante do Paço Imperial em maio de 1888.</p>
+            <a href="https://commons.wikimedia.org/wiki/File:Povo_pa%C3%A7o_1888.jpg" target="_blank" rel="noopener">CONSULTAR FOTOGRAFIA ↗</a>
+          </div>
+        </article>
+
+        <article class="archive-card reveal">
+          <div class="archive-image">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Capoeira%20in%20Bahia%201835.jpg" alt="Representação artística histórica de capoeira na Bahia">
+            <span>04 / CULTURA</span>
+          </div>
+          <div class="archive-info">
+            <h3>Capoeira na Bahia</h3>
+            <p>Representação artística do século XIX relacionada à capoeira. Não se trata de uma fotografia.</p>
+            <a href="https://commons.wikimedia.org/wiki/Category:Capoeira" target="_blank" rel="noopener">CONSULTAR ARQUIVO ↗</a>
+          </div>
+        </article>
+      </div>
+
+      <p class="archive-note">Imagens históricas e representações artísticas. Consulte os arquivos originais para informações sobre autoria e licença de uso.</p>
+    </section>
+
+    <!-- RESISTÊNCIA -->
+    <section class="resistance section-slide" id="resistencia">
+      <div class="resistance-image">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Mirante%20serra%20da%20barriga.jpg" alt="Paisagem atual da Serra da Barriga, em Alagoas">
+      </div>
+
+      <div class="resistance-content reveal">
+        <span class="eyebrow">CAPÍTULO 03 — RESISTÊNCIA</span>
+        <h2>Quilombo dos<br><span>Palmares.</span></h2>
+        <p>
+          Localizado na região da atual Alagoas, o Quilombo dos Palmares
+          tornou-se um dos maiores símbolos da resistência à escravidão
+          na história do Brasil.
+        </p>
+        <p>
+          Durante décadas, Palmares reuniu pessoas que buscavam liberdade
+          e construíram uma organização social própria. Sua história
+          representa coragem, luta e resistência.
+        </p>
+        <div class="resistance-signature">
+          <strong>ZUMBI DOS PALMARES</strong>
+          <span>UM DOS PRINCIPAIS SÍMBOLOS DA RESISTÊNCIA NEGRA</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PERSONALIDADES -->
+    <section class="people section-slide" id="personalidades">
+      <div class="section-heading reveal">
+        <span class="eyebrow">CAPÍTULO 04 — GRANDES PERSONALIDADES</span>
+        <h2>Vozes que <span>transformaram.</span></h2>
+        <p>Pessoas que marcaram a história por sua luta, inteligência, arte e contribuição para a sociedade.</p>
+      </div>
+
+      <div class="people-grid">
+        <article class="person-card reveal">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Zumbi%20dos%20Palmares.jpg" alt="Representação de Zumbi dos Palmares">
+          <div class="person-info">
+            <span>RESISTÊNCIA</span>
+            <h3>Zumbi dos Palmares</h3>
+            <p>Uma das principais lideranças do Quilombo dos Palmares e símbolo da resistência negra.</p>
+          </div>
+        </article>
+
+        <article class="person-card reveal">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Dandara%20dos%20Palmares.jpg" alt="Representação de Dandara dos Palmares">
+          <div class="person-info">
+            <span>LIBERDADE</span>
+            <h3>Dandara dos Palmares</h3>
+            <p>Figura histórica associada à resistência e à luta pela liberdade em Palmares.</p>
+          </div>
+        </article>
+
+        <article class="person-card reveal">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Carolina%20Maria%20de%20Jesus.jpg" alt="Retrato de Carolina Maria de Jesus">
+          <div class="person-info">
+            <span>LITERATURA</span>
+            <h3>Carolina Maria de Jesus</h3>
+            <p>Escritora brasileira que registrou desigualdades sociais em obras como Quarto de Despejo.</p>
+          </div>
+        </article>
+
+        <article class="person-card reveal">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Machado%20de%20Assis%20by%20Marc%20Ferrez.jpg" alt="Retrato de Machado de Assis">
+          <div class="person-info">
+            <span>EDUCAÇÃO E LITERATURA</span>
+            <h3>Machado de Assis</h3>
+            <p>Escritor brasileiro, fundador da Academia Brasileira de Letras e um dos maiores nomes da literatura nacional.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CULTURA -->
+    <section class="culture section-slide" id="cultura">
+      <div class="culture-content reveal">
+        <span class="eyebrow">CAPÍTULO 05 — IDENTIDADE</span>
+        <h2>Uma cultura que<br><span>vive em nós.</span></h2>
+        <p>
+          A influência africana está presente na música, na dança,
+          na culinária, na religião, na linguagem e em diversas
+          manifestações culturais brasileiras.
+        </p>
+      </div>
+
+      <div class="culture-grid">
+        <div class="culture-card reveal">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Congado%20in%20Minas%20Gerais%201876.jpg" alt="Representação histórica do Congado em Minas Gerais">
+          <div><span>01</span><h3>Tradições</h3></div>
+        </div>
+        <div class="culture-card reveal">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Capoeira%20in%20Bahia%201835.jpg" alt="Representação artística de capoeira">
+          <div><span>02</span><h3>Capoeira</h3></div>
+        </div>
+        <div class="culture-card reveal">
+          <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1000&q=85" alt="Apresentação musical">
+          <div><span>03</span><h3>Música</h3></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ATUALIDADE -->
+    <section class="today section-slide" id="atualidade">
+      <div class="section-heading reveal">
+        <span class="eyebrow">CAPÍTULO 06 — O PRESENTE</span>
+        <h2>A luta ainda <span>continua.</span></h2>
+        <p>A abolição da escravidão não eliminou o racismo nem as desigualdades sociais.</p>
+      </div>
+
+      <div class="today-grid">
+        <div class="today-item reveal">
+          <span>01</span>
+          <h3>Combate ao racismo</h3>
+          <p>Enfrentar atitudes discriminatórias e promover o respeito entre todas as pessoas.</p>
+        </div>
+        <div class="today-item reveal">
+          <span>02</span>
+          <h3>Igualdade de oportunidades</h3>
+          <p>Garantir acesso à educação, ao trabalho e aos direitos fundamentais.</p>
+        </div>
+        <div class="today-item reveal">
+          <span>03</span>
+          <h3>Valorização cultural</h3>
+          <p>Reconhecer a importância da história e das contribuições da população negra.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL -->
+    <section class="finale section-slide" id="finale">
+      <div class="finale-bg"></div>
+      <div class="finale-content reveal">
+        <span class="eyebrow">20 DE NOVEMBRO</span>
+        <h2>Consciência é<br><span>conhecimento.</span></h2>
+        <p>
+          Respeitar a história é reconhecer quem veio antes.
+          Construir um futuro melhor começa com consciência,
+          educação e igualdade.
+        </p>
+        <a href="#inicio" class="primary-btn">VOLTAR AO INÍCIO ↑</a>
+      </div>
+      <footer>
+        <span>RAÍZES. — CONSCIÊNCIA NEGRA</span>
+        <span>MEMÓRIA QUE NÃO SE APAGA.</span>
+      </footer>
+    </section>
+
+  </main>
+
+  <div class="presentation-hint" id="presentationHint">
+    Use ← → para navegar · ESC para sair
+  </div>
+
+  <script>
+
+const loader = document.getElementById("loader");
+const progressBar = document.getElementById("progressBar");
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+const presentationBtn = document.getElementById("presentationBtn");
+
+let presentationMode = false;
+let currentSlide = 0;
+
+const slides = [...document.querySelectorAll(".section-slide")];
+
+// CARREGAMENTO
+
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    loader.classList.add("hide");
+    document.body.classList.remove("loading");
+  }, 800);
+});
+
+// MENU MOBILE
+
+menuBtn.addEventListener("click", () => {
+  mobileMenu.classList.toggle("open");
+});
+
+mobileMenu.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    mobileMenu.classList.remove("open");
+  });
+});
+
+// BARRA DE PROGRESSO
+
+function updateProgress() {
+  const scrollTop = window.scrollY;
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  const percentage = maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0;
+
+  progressBar.style.width = percentage + "%";
+}
+
+window.addEventListener("scroll", updateProgress);
+
+// ANIMAÇÕES AO ROLAR
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.12
+});
+
+document.querySelectorAll(".reveal").forEach(element => {
+  observer.observe(element);
+});
+
+// APRESENTAÇÃO
+
+function enterPresentation() {
+  presentationMode = true;
+  currentSlide = 0;
+
+  document.body.classList.add("presentation-mode");
+  showSlide(currentSlide);
+}
+
+function exitPresentation() {
+  presentationMode = false;
+
+  document.body.classList.remove("presentation-mode");
+
+  slides.forEach(slide => {
+    slide.classList.remove("active");
+  });
+
+  window.scrollTo({
+    top: 0,
+    behavior: "instant"
+  });
+}
+
+function showSlide(index) {
+  if (index < 0 || index >= slides.length) return;
+
+  currentSlide = index;
+
+  slides.forEach(slide => {
+    slide.classList.remove("active");
+  });
+
+  const activeSlide = slides[currentSlide];
+  activeSlide.classList.add("active");
+  activeSlide.scrollTop = 0;
+}
+
+function nextSlide() {
+  if (currentSlide < slides.length - 1) {
+    showSlide(currentSlide + 1);
+  }
+}
+
+function previousSlide() {
+  if (currentSlide > 0) {
+    showSlide(currentSlide - 1);
+  }
+}
+
+presentationBtn.addEventListener("click", enterPresentation);
+
+document.addEventListener("keydown", (event) => {
+  if (!presentationMode) return;
+
+  if (event.key === "ArrowRight" || event.key === " ") {
+    event.preventDefault();
+    nextSlide();
+  }
+
+  if (event.key === "ArrowLeft") {
+    event.preventDefault();
+    previousSlide();
+  }
+
+  if (event.key === "Escape") {
+    exitPresentation();
+  }
+});
+
+// FECHAR MENU AO CLICAR FORA
+
+document.addEventListener("click", (event) => {
+  if (
+    !mobileMenu.contains(event.target) &&
+    !menuBtn.contains(event.target)
+  ) {
+    mobileMenu.classList.remove("open");
+  }
+});
+
+// ANIMAÇÃO SUAVE DOS CARTÕES
+
+document.querySelectorAll(".archive-card, .person-card, .culture-card").forEach(card => {
+  card.addEventListener("mousemove", (event) => {
+    const rect = card.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    card.style.setProperty("--mouse-x", `${x}px`);
+    card.style.setProperty("--mouse-y", `${y}px`);
+  });
+});
+
+</script>
+</body>
+</html>

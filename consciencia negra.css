@@ -1,0 +1,263 @@
+
+
+:root {
+    --cor-escura: #1a120b;
+    --cor-dourada: #d4a574;
+    --cor-marrom: #5c3d2e;
+    --cor-clara: #f8f4ed;
+    --cor-destaque: #8b4513;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--cor-clara);
+    color: var(--cor-escura);
+    line-height: 1.6;
+}
+
+header {
+    background-color: var(--cor-escura);
+    padding: 1rem 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.navegacao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    color: var(--cor-dourada);
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.menu a {
+    color: var(--cor-clara);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}.menu a:hover {
+    color: var(--cor-dourada);
+}
+
+.secao {
+    padding: 6rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.titulo-secao {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--cor-marrom);
+    text-align: center;
+    margin-bottom: 3rem;
+   position: relative;
+}
+
+.titulo-secao::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--cor-dourada);
+    margin: 0.5rem auto 0;
+}
+
+.inicio {
+    background: linear-gradient(rgba(26, 18, 11, 0.85), rgba(26, 18, 11, 0.85)), 
+                url(Dia-da-Consciencia-Negra-1600x1066.jpg) center/cover;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 8rem;
+}
+
+.inicio-conteudo h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    color: var(--cor-dourada);
+    margin-bottom: 1rem;
+}
+
+.inicio-conteudo h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+
+.inicio-conteudo p {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
+
+.btn {
+    background-color: var(--cor-dourada);
+    color: var(--cor-escura);
+    border: none;
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    background-color: #b88c5d;
+    transform: translateY(-2px);
+}
+
+.conteudo {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.texto p {
+    margin-bottom: 1.2rem;
+    font-size: 1.05rem;
+}
+
+.destaque {
+    background-color: var(--cor-dourada);
+    padding: 2rem;
+    border-radius: 8px;
+    color: var(--cor-escura);
+}
+
+.destaque h3 {
+    margin-bottom: 1rem;
+}
+
+.grade-figuras {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.cartao {
+    background-color: white;
+    padding: 1.5rem;
+    border-left: 5px solid var(--cor-dourada);
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    transition: transform 0.3s;
+}
+
+.cartao:hover {
+    transform: translateY(-5px);
+}
+
+.cartao h3 {
+    color: var(--cor-marrom);
+    margin-bottom: 0.8rem;
+}
+
+
+.lista-cultura {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+}
+
+.item-cultura {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.item-cultura h3 {
+    color: var(--cor-destaque);
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+}
+
+.caixa-frases {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+blockquote {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 6px solid var(--cor-dourada);
+    font-size: 1.2rem;
+    font-style: italic;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+cite {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: var(--cor-marrom);
+    font-weight: 600;
+}
+
+footer {
+    background-color: var(--cor-escura);
+    color: var(--cor-clara);
+    text-align: center;
+    padding: 3rem 5%;
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .menu {
+        margin-top: 1rem;
+        gap: 1rem;
+    }
+
+    .inicio-conteudo h1 {
+        font-size: 2.2rem;
+    }
+
+    .conteudo {
+        grid-template-columns: 1fr;
+    }
+}
+
+img {
+  max-width: 100%;  
+  height: auto;          
+  display: block;        
+  margin: 0 auto;
+}
+
+.conteudo {
+  position: relative;
+  z-index: 1;
+}
+
+.imagem {
+  position: relative;
+  z-index: 0;
+}
+video {width: 640; height: 360;}
